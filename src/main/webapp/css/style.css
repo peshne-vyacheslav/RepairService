@@ -1,0 +1,41 @@
+.table-wrapper {
+    min-height: 300px;
+    max-height: 700px;
+    overflow: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+
+.orders-table-wrapper {
+    min-width: 50%;
+    max-width: 75%;
+
+}
+
+.users-table-wrapper {
+    min-width: 30%;
+    max-width: 50%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.logout {
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.create-order-btn {
+    text-align: center;
+}

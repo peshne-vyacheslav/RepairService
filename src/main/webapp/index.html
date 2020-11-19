@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Repair service</title>
+    <body>
+        <a href="logout" class="btn btn-primary btn-sm float-right logout"> Log out</a>
+        <h2 class="centered-text">Orders</h2>
+        <div class="table-wrapper orders-table-wrapper border center">
+            <table id="orders-table" class="table table-bordered table-sm">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Created</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="text-center">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create-order-dialog">
+            Create Order
+        </button>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="create-order-dialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Create Order</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="create-order-form" class="center small">
+                            <div class="input-group description">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Description</span>
+                                </div>
+                                <textarea id="description" class="form-control" aria-label="Description"></textarea>
+                            </div>
+                            <div class="button-group">
+                                <button id="create-order-btn" type="button" class="btn btn-primary">Create</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- scripts -->
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script src="js/orders.js"></script>
+    </body>
+</html>
