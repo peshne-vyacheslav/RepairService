@@ -3,10 +3,11 @@ package com.example.repair.entity;
 import com.example.repair.entity.enums.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -14,6 +15,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "USER_ROLE")
+@Where(clause="is_deleted=false")
+@SQLDelete(sql = "UPDATE USER_ROLE SET is_deleted = true WHERE id = ?", check = ResultCheckStyle.COUNT)
 public class UserRole implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

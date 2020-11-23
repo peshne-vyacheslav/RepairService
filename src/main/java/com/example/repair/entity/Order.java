@@ -2,10 +2,11 @@ package com.example.repair.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -13,6 +14,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Entity
 @Table(name = "ORDERS")
+@Where(clause="is_deleted=false")
+@SQLDelete(sql = "UPDATE ORDERS SET is_deleted = true WHERE id = ?", check = ResultCheckStyle.COUNT)
 public class Order implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

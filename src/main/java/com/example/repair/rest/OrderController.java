@@ -28,8 +28,8 @@ public class OrderController {
 
     @GetMapping("/orders")
     public List<OrderDto> getOrders(Authentication authentication) {
-        UserPrincipal userDetails = (UserPrincipal) authentication.getPrincipal();
-        return orderService.getOrders(userDetails.getUserId(), userDetails.getRoles())
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+        return orderService.getOrders(userPrincipal.getUserId(), userPrincipal.getRoles())
                 .stream()
                 .map(orderConverter::toOrderDto)
                 .collect(Collectors.toList());
@@ -38,7 +38,7 @@ public class OrderController {
     @PostMapping(value = "/orders", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto createOrder(@Valid @RequestBody CreateOrderDto orderDto, Authentication authentication) {
-        Order order = orderConverter.fromCreateOrderDto(orderDto);
+        Order order = orderConverter.toOrder(orderDto);
         UserPrincipal userDetails = (UserPrincipal) authentication.getPrincipal();
         User user = userService.getUserByLogin(userDetails.getUsername());
         order.setUser(user);
@@ -56,7 +56,7 @@ public class OrderController {
     @PutMapping(value = "/orders/{orderId}", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
     public OrderDto update(@PathVariable Long orderId, @Valid @RequestBody CreateOrderDto orderDto) {
-        Order order = orderConverter.fromCreateOrderDto(orderDto);
+        Order order = orderConverter.toOrder(orderDto);
         order = orderService.updateOrder(orderId, order);
         return orderConverter.toOrderDto(order);
     }

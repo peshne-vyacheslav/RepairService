@@ -32,10 +32,18 @@
     margin-right: 20px;
 }
 
+.nav-bar-buttons {
+    border: 1px solid white;
+}
+
 .description {
     margin-bottom: 20px;
 }
 
 .create-order-btn {
     text-align: center;
+}
+
+.selected {
+    background-color:#c4d9f2;
 }

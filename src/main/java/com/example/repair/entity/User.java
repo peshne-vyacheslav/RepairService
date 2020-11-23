@@ -3,11 +3,12 @@ package com.example.repair.entity;
 import com.example.repair.entity.enums.Role;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.*;
 import org.springframework.util.CollectionUtils;
 
 import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Collections;
@@ -18,6 +19,8 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @Entity
 @Table(name = "USERS_")
+@Where(clause="is_deleted=false")
+@SQLDelete(sql = "UPDATE USERS_ SET is_deleted = true WHERE id = ?", check = ResultCheckStyle.COUNT)
 public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

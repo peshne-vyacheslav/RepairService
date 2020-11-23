@@ -12,5 +12,5 @@ public interface OrderConverter {
     @Mapping(source = "user.name", target = "user")
     OrderDto toOrderDto(Order order);
 
-    Order fromCreateOrderDto(CreateOrderDto createOrderDto);
+    Order toOrder(CreateOrderDto createOrderDto);
 }
